@@ -58,10 +58,70 @@ button {
 
 /* add your styles here */
 
+header{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.container {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 24%;
+    transition: box-shadow 1s;
+}
+
+.card:hover{
+    box-shadow: 0 4px 8px rgba(0,0,0,00.2);
+}
+
+.card img{
+    max-width: 100%;
+    transition: filter 0.3s;
+}
+
+.card:hover img{
+    filter: saturate(150%);
+}
+
+.card button{
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.card:hover button{
+    opacity: 1;
+}
+
+@media screen and (max-width: 768px) and (min-width: 481px) {
+    .card {
+        width: 45%;
+    }
+    :root {
+        --header-height: 5em;
+        --card-font-size: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+    :root {
+        --header-height: 4em;
+        --header-font-size: 24px;
+        --card-font-size: 100%;
+    }
+}
 
 
-
-/* styles for mobile protrait screen */
-
-
-/* styles for tablet portrait and mobile landscape screens */
