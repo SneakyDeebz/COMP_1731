@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chapter 11</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+
+    <link rel="stylesheet" href="ch11-proj1.css" />
+
+    <!--The React JS libraries -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!--Initially, we will use the babel run-time library to convert JSX in the browser -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>   
+    
+    <script src="movie-data.js"></script>
+    
+<script type="text/babel">
+
+/* 
+------------------------------------------------------------------------------------------------------------------
+*/
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            movies: movieData,
+            selectedMovieIndex: 0
+        };
+        this.saveChanges = this.saveChanges.bind(this);
+        this.selectMovie = this.selectMovie.bind(this);
+    }
+
+    saveChanges(movie, index) {
+        // Create a copy of the movies array
+        const updatedMovies = [...this.state.movies];
+        // Replace the movie at the specified index
+        updatedMovies[index] = movie;
+        // Update the state with the new movies array
+        this.setState({ movies: updatedMovies });
+    }
+
+    selectMovie(index) {
+        this.setState({ selectedMovieIndex: index });
+    }
+
+    render() {
+        return (
+            <main className="container">
+                <section className="columns has-background-light">
+                    <MovieList 
+                        movies={this.state.movies} 
+                        selectMovie={this.selectMovie}
+                    />
+                    <div className="column is-half">
+                        {this.state.movies.map((movie, index) => (
+                            <MovieForm 
+                                key={movie.id} 
+                                movie={movie} 
+                                index={index}
+                                saveChanges={this.saveChanges}
+                            />
+                        ))}
+                    </div>
+                </section>
+            </main>                
+        );
+    }
+}
+
+/* 
+------------------------------------------------------------------------------------------------------------------
+*/
+class MovieForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: this.props.movie.title,
+            tagline: this.props.movie.tagline,
+            runtime: this.props.movie.runtime
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        const { name, value } = event.target;
+        this.setState({ [name]: value }, () => {
+            // After state is updated, create updated movie object
+            const updatedMovie = {
+                ...this.props.movie,
+                title: this.state.title,
+                tagline: this.state.tagline,
+                runtime: this.state.runtime
+            };
+            // Call saveChanges from parent component
+            this.props.saveChanges(updatedMovie, this.props.index);
+        });
+    }
+
+    render() {
+        return (
+            <form className="panel has-background-grey-lighter">
+                <div className="field is-horizontal">
+                    <div className="field-label is-normal">
+                        <label className="label">Title</label>
+                    </div>
+                    <div className="field-body">
+                        <input 
+                            className="input" 
+                            type="text" 
+                            name="title"
+                            value={this.state.title}
+                            onChange={this.handleChange}
+                        />   
+                    </div>
+                </div>   
+
+                <div className="field is-horizontal">
+                    <div className="field-label is-normal">
+                        <label className="label">Tagline</label>
+                    </div>
+                    <div className="field-body">
+                        <textarea 
+                            className="textarea" 
+                            rows="2" 
+                            name="tagline"
+                            value={this.state.tagline}
+                            onChange={this.handleChange}
+                        ></textarea>
+                    </div>
+                </div>                  
+
+                <div className="field is-horizontal">
+                    <div className="field-label is-normal">
+                        <label className="label">Runtime</label>
+                    </div>
+                    <div className="field-body">
+                        <input 
+                            className="input" 
+                            type="text" 
+                            name="runtime"
+                            value={this.state.runtime}
+                            onChange={this.handleChange}
+                        />   
+                    </div>
+                </div>                                      
+            </form>
+        );
+    }
+}
+
+/* 
+------------------------------------------------------------------------------------------------------------------
+*/
+class MovieList extends React.Component {
+    render() {
+        return (
+            <div className="column is-half">
+                <ul className="columns is-multiline">
+                    {this.props.movies.map((movie, index) => (
+                        <SingleMovie 
+                            key={movie.id} 
+                            movie={movie} 
+                            index={index}
+                            selectMovie={this.props.selectMovie}
+                        />
+                    ))}
+                </ul>   
+            </div>   
+        );
+    }
+}
+
+/* 
+------------------------------------------------------------------------------------------------------------------
+*/
+class SingleMovie extends React.Component {
+    handleClick = () => {
+        this.props.selectMovie(this.props.index);
+    }
+
+    render() {
+        const { movie } = this.props;
+        return (
+            <li className="column is-one-third-desktop is-half-tablet" onClick={this.handleClick}>
+                <div className="card">
+                    <div className="card-image">
+                        <figure className="image is-2by3">
+                            <img 
+                                src={`https://image.tmdb.org/t/p/w185${movie.poster}`} 
+                                alt={movie.title} 
+                            />
+                        </figure>
+                    </div>
+                    <div className="card-content has-text-centered content-rectangle">
+                        <h2 className="title is-6">{movie.title} ({movie.runtime} min)</h2>
+                        <p className="is-size-7">{movie.tagline}</p>
+                    </div>    
+                    <footer className="card-footer">
+                        <MovieLink id={movie.tmdbID} />
+                    </footer>                                      
+                </div>                
+            </li>
+        );
+    }
+}
+
+/* 
+------------------------------------------------------------------------------------------------------------------
+*/
+const MovieLink = props => {
+    return (
+        <a className="button card-footer-item" 
+            href={`https://www.themoviedb.org/movie/${props.id}`}>
+            <img src="images/tmdb.svg" width="30" />
+        </a>    
+    );
+};
+    
+ReactDOM.render(<App />, document.querySelector('#react-container'));
+  
+</script> 
+        
+        
+  </head>
+  <body>
+    <div id='react-container' ></div>
+  </body>
+</html>
