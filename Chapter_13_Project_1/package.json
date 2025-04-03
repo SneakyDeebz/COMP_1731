@@ -1,0 +1,16 @@
+{
+  "name": "chapter_13_project_1",
+  "version": "1.0.0",
+  "description": "API for retreiving art gallery data",
+  "main": "art.js",
+  "scripts": {
+    "start": "node art.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
