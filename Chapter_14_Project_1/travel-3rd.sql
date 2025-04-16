@@ -4,9 +4,9 @@
 -- ------------------------------------------------------
 -- Server version	5.6.34
 
-DROP DATABASE IF EXISTS `travel`;
-CREATE DATABASE IF NOT EXISTS `travel`;
-USE `travel`;
+-- DROP DATABASE IF EXISTS `travel`;
+-- CREATE DATABASE IF NOT EXISTS `travel`;
+USE `b7_38099655_travel`;
 
 
 --
