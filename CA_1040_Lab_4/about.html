@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio – About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-logo">My Portfolio</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- About Hero -->
+  <section class="page-hero">
+    <h1>About <span class="highlight">Me</span></h1>
+    <p class="page-subtitle">A little more about who I am</p>
+  </section>
+
+  <!-- Main About Content -->
+  <section class="section">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>Hi, I'm Gavin!</h2>
+        <p>
+          I'm a sophomore Computer Science student with a passion for building
+          beautiful, user-friendly web experiences. When I'm not coding, I enjoy
+          hiking, photography, and trying new coffee shops.
+        </p>
+        <p>
+          I believe great design and clean code go hand in hand. My goal is to
+          become a full-stack developer who can bring creative ideas to life on
+          the web.
+        </p>
+
+        <!-- Toggle Section -->
+        <button id="toggle-btn" class="btn-secondary">+ Show More About Me</button>
+        <div id="more-info" class="more-info collapsed">
+          <h3>More Details</h3>
+          <ul>
+            <li>🎓 Major: Computer Science</li>
+            <li>🌍 Location: Rochester, MN</li>
+            <li>🎵 Favorite music: Lo-fi &amp; Indie</li>
+            <li>📚 Currently reading: <em>Clean Code</em> by Robert C. Martin</li>
+            <li>🚀 Dream job: UX Engineer at a tech company</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="about-fun">
+        <div class="fun-card">
+          <h3>Random Fun Fact</h3>
+          <p id="fun-fact">Click the button to learn something about me!</p>
+          <button id="fact-btn" class="btn-primary">New Fact</button>
+        </div>
+        <div class="fun-card" style="margin-top: 1.5rem;">
+          <h3>Lucky Number Today</h3>
+          <p id="lucky-number" class="big-number">?</p>
+          <button id="lucky-btn" class="btn-secondary">Generate</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="section alt-bg">
+    <h2 class="section-title">Personalize Your View</h2>
+    <p>Choose a theme and it will be remembered next time you visit!</p>
+    <div class="theme-buttons">
+      <button class="theme-btn" data-theme="default">🌿 Default</button>
+      <button class="theme-btn" data-theme="dark">🌙 Dark</button>
+      <button class="theme-btn" data-theme="warm">☀️ Warm</button>
+    </div>
+    <p id="theme-saved-msg" class="saved-msg"></p>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 Gavin Sullivan. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

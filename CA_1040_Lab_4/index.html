@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio – Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-logo">My Portfolio</div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <p id="greeting-text" class="greeting">Hello!</p>
+      <h1>I'm <span class="highlight">Gavin Sullivan</span></h1>
+      <p class="tagline" id="tagline">Front-End Developer &amp; Creative Thinker</p>
+      <p id="today-date" class="date-display"></p>
+      <button id="change-btn" class="btn-primary">✨ Inspire Me</button>
+    </div>
+    <div class="hero-photo">
+      <img src="https://placehold.co/260x260/c9a96e/fff?text=Your+Photo" alt="Profile Photo" />
+    </div>
+  </section>
+
+  
+  <section class="section">
+    <h2 class="section-title">My Skills</h2>
+    <ul id="skills-list" class="skills-list"></ul>
+  </section>
+
+  
+  <section class="section alt-bg">
+    <h2 class="section-title">What I Love</h2>
+    <div id="category-display" class="category-card"></div>
+  </section>
+
+  
+  <div id="timer-banner" class="timer-banner">
+    ⏱ You've been here for <span id="timer-count">0</span> seconds. Thanks for visiting!
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 Gavin Sullivan. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio – Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-logo">My Portfolio</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <h1>Get In <span class="highlight">Touch</span></h1>
+    <p class="page-subtitle">I'd love to hear from you</p>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="section">
+    <div class="form-wrapper">
+
+      
+      <div id="success-msg" class="success-msg hidden">
+        ✅ Thank you! Your message has been sent successfully.
+      </div>
+
+      <form id="contact-form" novalidate>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Jane Doe" />
+          <span class="error-msg" id="name-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="jane@example.com" />
+          <span class="error-msg" id="email-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" placeholder="Write your message here..."></textarea>
+          <span class="error-msg" id="message-error"></span>
+          <small id="char-count" class="char-count">0 characters</small>
+        </div>
+
+        <button type="submit" class="btn-primary btn-full">Send Message</button>
+      </form>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="contact-info">
+      <h3>Other Ways to Reach Me</h3>
+      <p>📧 gavin.sullivan@email.com</p>
+      <p>📍 Rochester, MN</p>
+      <p>💼 <a href="#">LinkedIn Profile</a></p>
+      <p>🐙 <a href="#">GitHub Profile</a></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 Gavin Sullivan. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
